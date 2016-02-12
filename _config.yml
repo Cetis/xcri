@@ -2,7 +2,7 @@
 title: Cetis LLP Standards Support
 email: david@cetis.org.uk
 description: > # this means to ignore newlines until "baseurl:"
-  This site is generated via cetis.githib.io/xcri.
+  This site is generated via https://github.com/Cetis/xcri.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://github.com/Cetis/xcri" # the base hostname & protocol for your site
 twitter_username: cetisllp
