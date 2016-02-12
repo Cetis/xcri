@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <xs:schema  
+ xmlns="mlo" 
+ xmlns:dc="http://purl.org/dc/elements/1.1/" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="mlo" 
+ elementFormDefault="qualified" 
+ attributeFormDefault="unqualified">
+
+ 
+  	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="stupid_dc.xsd"/>
+ 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>	
+ 
+    <!-- root element. this is for convenience in this binding, as MLO does not define a standard document root -->
+    <xs:element name="Document">
+    <xs:complexType>
+        <xs:complexContent mixed="false">
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:any processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    </xs:element>
+ 
+    <!-- ranges -->
+    <xs:complexType name="Literal">
+        <xs:annotation>
+        <xs:documentation xml:lang="en">
+            This type permits text content only with optional xml:lang attribute.
+            Text is allowed because mixed="true", but sub-elements
+            are disallowed because minOccurs="0" and maxOccurs="0" 
+            are on the xs:any tag.
+    	    This complexType allows for restriction or extension permitting
+            child elements.
+    	</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:any processContents="strict" minOccurs="0" maxOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="Resource">
+        <xs:annotation>
+        <xs:documentation xml:lang="en">
+            This type permits either inclusion of sub-elements (resources)
+            or literal text content
+    	</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:any processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="Association">
+        <xs:annotation>
+        <xs:documentation xml:lang="en">
+            This type permits either inclusion of sub-elements (resources)
+            or the use of a literal URI to associate the containing 
+            resource with a target.
+            Text is allowed because mixed="true"
+    	</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:any namespace="mlo" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    
+    <!-- classes -->
+    <xs:complexType name="LearningOpportunityObject" abstract="true">
+         <xs:sequence>
+             <xs:any namespace="http://purl.org/dc/elements/1.1/" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+             <xs:element ref="hasPart" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LearningOpportunityProvider">
+        <xs:complexContent>
+            <xs:extension base="LearningOpportunityObject">
+                <xs:sequence>
+                    <xs:element ref="location" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="offers" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+         </xs:complexContent>
+    </xs:complexType>
+     
+    <xs:complexType name="LearningOpportunitySpecification">
+        <xs:complexContent>
+            <xs:extension base="LearningOpportunityObject">
+                <xs:sequence>
+                    <xs:element ref="qualification" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="credit" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="level" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="specifies" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+         </xs:complexContent>
+    </xs:complexType>
+     
+    <xs:complexType name="LearningOpportunityInstance">
+        <xs:complexContent>
+            <xs:extension base="LearningOpportunityObject">
+                <xs:sequence>
+                    <xs:element ref="location" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="start" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="duration" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="cost" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="languageOfInstruction" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="prerequisite" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="places" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="engagement" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="objective" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="offeredAt" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+         </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="learningOpportunityProvider" type="LearningOpportunityProvider"/>
+    <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
+    <xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
+             
+    <!--associations-->
+
+    <xs:complexType name="OfferedAt">
+        <xs:complexContent>
+            <xs:extension base="Association"/>
+         </xs:complexContent>    
+    </xs:complexType>
+
+    <xs:complexType name="Offers">
+        <xs:complexContent>
+            <xs:extension base="Association"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    
+    <xs:complexType name="Specifies">
+        <xs:complexContent>
+            <xs:extension base="Association"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    
+    <xs:complexType name="HasPart">
+        <xs:complexContent>
+            <xs:extension base="Association"/>
+         </xs:complexContent>    
+    </xs:complexType>
+        
+    <xs:element name="offeredAt" type="OfferedAt"/>
+    <xs:element name="offers" type="Offers"/>
+    <xs:element name="specifies" type="Specifies"/>
+    <xs:element name="hasPart" type="HasPart"/>
+    
+    <!--properties-->
+    
+    <xs:complexType name="Url">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Location">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Qualification">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Credit">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="LanguageOfInstruction">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Level">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Start">
+        <xs:simpleContent>
+            <xs:extension base="xs:dateTime"/>
+         </xs:simpleContent>    
+    </xs:complexType>
+    <xs:complexType name="Duration">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Cost">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Prerequisite">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Places">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Engagement">
+        <xs:complexContent>
+            <xs:extension base="Literal"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    <xs:complexType name="Objective">
+        <xs:complexContent>
+            <xs:extension base="Resource"/>
+         </xs:complexContent>    
+    </xs:complexType>
+    
+    <xs:element name="url" type="Url"/>
+    <xs:element name="location" type="Location"/>
+    <xs:element name="qualification" type="Qualification"/>
+    <xs:element name="credit" type="Credit"/>  
+    <xs:element name="languageOfInstruction" type="LanguageOfInstruction"/>
+    <xs:element name="level" type="Level"/>
+    <xs:element name="start" type="Start"/>
+    <xs:element name="duration" type="Duration"/>        
+    <xs:element name="cost" type="Cost"/>
+    <xs:element name="prerequisite" type="Prerequisite"/>
+    <xs:element name="places" type="Places"/>
+    <xs:element name="engagement" type="Engagement"/>  
+    <xs:element name="objective" type="Objective"/>  
+    
+</xs:schema>

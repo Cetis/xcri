@@ -1,0 +1,391 @@
+---
+layout: post
+---
+
+
+
+
+
+
+
+Description 
+===========
+
+
+
+
+
+
+
+
+
+
+
+
+
+### From Xcri 
+
+
+
+
+
+
+
+Jump to: [navigation](Description.html#column-one),
+[search](Description.html#searchInput)
+
+
+
+*URI*: 
+
+*Definition*: A description element is used within the XCRI Course
+Advertising Profile to provide descriptions of resources and other
+structures.
+
+*Type*: Structured, see below.
+
+v1.1: *Namespace*: This is defined within the namespace:
+
+
++--------------------------------------------------------------------------+
+|                                                       |
+|                                                                          |
+| Contents                                                                 |
+| --------                                                                 |
+|                                                                          |
+|                                                                    |
+|                                                                          |
+| -   [1 Attributes](Description.html#Attributes)      |
+| -   [2 Content](Description.html#Content)            |
+| -   [3 Example](Description.html#Example)            |
+| -   [4 Guidance     |
+|     Notes](Description.html#Guidance_Notes)                       |
+| -   [5 History](Description.html#History)            |
+| -   [6 Usage](Description.html#Usage)                |
++--------------------------------------------------------------------------+
+
+
+### \[[edit](../index.php@title=Description&action=edit&section=1.html "Edit section: Attributes")\] Attributes
+
+**@lang** (optional) The language used for the description
+
+**@href** (optional) A link to supporting information
+
+
+### \[[edit](../index.php@title=Description&action=edit&section=2.html "Edit section: Content")\] Content
+
+The content of the element MUST be one of either:
+
+-   Empty (@href MUST NOT be empty or missing)
+-   Plain unescaped text
+-   Valid XHTML 1.0 content
+
+
+\[[edit](../index.php@title=Description&action=edit&section=3.html "Edit section: Example")\] Example
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        
+            
+                This module shows how to take an existing presentation and modify it and how to create 
+                 your own presentations. No knowledge of PowerPoint is assumed.
+                The topics covered are:
+                    
+                        Using and modifying an existing PowerPoint presentation 
+                        Creating a simple presentation 
+                        Making use of themes and schemes supplied with PowerPoint 
+                        The PowerPoint views 
+                        Printing and saving your presentation
+                    
+                 
+                    
+        
+
+
+\[[edit](../index.php@title=Description&action=edit&section=4.html "Edit section: Guidance Notes")\] Guidance Notes
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**Encoding schemes:** Use of vocabularies is encouraged for
+descriptions. See
+[XCRI\_Terms\_1.1](XCRI_Terms_1.1.html "XCRI Terms 1.1").
+
+**Use of images:** In general images should not be referenced from
+within the description element by [providers](Provider.html "Provider")
+as these are unlikely to be presented by Aggregators; potentially an
+image tag can be used to execute cross-site scripting (XSS) attacks.
+Instead, any image should be provided separately using the XCRI
+[image](Image.html "Image") element.
+
+**Long descriptions:** Aggregators may choose to truncate long
+descriptions.
+
+**Safe use of XHTML:** XCRI Description elements allow the delivery of
+XHTML. Many elements in these languages are considered 'unsafe' in that
+they open clients to one or more types of attack. Implementers of
+software which processes XCRI should carefully consider their handling
+of every type of element when processing incoming XHTML in XCRI XML
+documents. See the security sections of IETF RFC2854 and W3C XHTML for
+guidance. XCRI Aggregators should pay particular attention to the
+security of the IMG, SCRIPT, EMBED, OBJECT, FRAME, FRAMESET, IFRAME,
+META, and LINK elements, but other elements might also have negative
+security properties. XHTML can either directly contain or indirectly
+reference executable content.
+
+
+\[[edit](../index.php@title=Description&action=edit&section=5.html "Edit section: History")\] History
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**v1.1**: Since v1.1 the "type" attribute has been deprecated. Use
+encoding schemes instead.
+
+
+\[[edit](../index.php@title=Description&action=edit&section=6.html "Edit section: Usage")\] Usage
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Description is used in [provider](Provider.html "Provider"),
+[course](Course.html "Course"), and
+[presentation](Presentation.html "Presentation").
+
+
+
+Retrieved from
+"[http://localhost/Description](Description.html)"
+
+
+
+
+
+[Category](Special%253ACategories.html "Special:Categories"): [Properties](Category%253AProperties.html "Category:Properties")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Views
+
+
+
+-   
+
+    
+
+    [Article](Description.html)
+-   
+
+    
+
+    [Discussion](Talk%253ADescription.html)
+-   
+
+    
+
+    [Edit](../index.php@title=Description&action=edit.html)
+-   
+
+    
+
+    [History](../index.php@title=Description&action=history.html)
+
+
+
+
+
+
+
+##### Personal tools
+
+
+
+-   
+
+    
+
+    [127.0.0.1](User%253A127.0.0.1.html)
+-   
+
+    
+
+    [Talk for this IP](User_talk%253A127.0.0.1.html)
+-   
+
+    
+
+    [Log in / create
+    account](../index.php@title=Special%253AUserlogin&returnto=Description.html)
+
+
+
+
+
+
+
+
+
+
+
+[](../../wiki.1.html "XCRI Wiki")
+
+
+
+
+
+##### Navigation
+
+
+
+-   
+
+    
+
+    [XCRI Wiki](../../wiki.1.html)
+-   
+
+    
+
+    [XCRI website](http://www.xcri.org/)
+-   
+
+    
+
+    [Current events](Current_events.html)
+-   
+
+    
+
+    [Recent changes](Special%253ARecentchanges.html)
+-   
+
+    
+
+    [Help](Help%253AContents.html)
+
+
+
+
+
+
+
+##### Search
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+##### Toolbox
+
+
+
+-   
+
+    
+
+    [What links here](Special%253AWhatlinkshere/Description.html)
+-   
+
+    
+
+    [Related changes](Special%253ARecentchangeslinked/Description.html)
+-   
+
+    
+
+    [Upload file](Special%253AUpload.html)
+-   
+
+    
+
+    [Special pages](Special%253ASpecialpages.html)
+-   
+
+    
+
+    [Printable
+    version](../index.php@title=Description&printable=yes.html)
+-   
+
+    
+
+    [Permanent link](../index.php@title=Description&oldid=4325.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[![Powered by
+MediaWiki](../skins/common/images/poweredby_mediawiki_88x31.png)](http://www.mediawiki.org/)
+
+
+
+
+
+[![Attribution 3.0
+](http://i.creativecommons.org/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/)
+
+
+
+-   
+
+    
+
+    This page was last modified 08:28, 19 March 2012.
+-   
+
+    
+
+    This page has been accessed 8,883 times.
+-   
+
+    
+
+    Content is available under [Attribution
+    3.0](http://creativecommons.org/licenses/by/3.0/ "http://creativecommons.org/licenses/by/3.0/").
+-   
+
+    
+
+    [Privacy policy](Xcri%253APrivacy_policy.html "Xcri:Privacy policy")
+-   
+
+    
+
+    [About Xcri](Xcri%253AAbout.html "Xcri:About")
+-   
+
+    
+
+    [Disclaimers](Xcri%253AGeneral_disclaimer.html "Xcri:General disclaimer")
+
+
+
+

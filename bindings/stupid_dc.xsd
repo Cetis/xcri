@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://purl.org/dc/elements/1.1/" xmlns:catalog="http://xcri.org/profiles/catalog" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <xs:element name="title"/>
+  <xs:element name="subject"/>
+  <xs:element name="type"/>
+  <xs:element name="rights"/>
+  <xs:element name="publisher"/>
+  <xs:element name="date"/>
+  <xs:element name="language"/>
+  <xs:element name="creator"/>
+  <xs:element name="coverage"/>
+  <xs:element name="description"/>
+  <xs:element name="identifier"/>
+  <xs:element name="relation"/>
+  <xs:element name="contributor"/>
+  <xs:element name="source"/>
+  <xs:element name="format"/>
+</xs:schema>

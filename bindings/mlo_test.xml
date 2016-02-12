@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document 
+    xmlns="mlo"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xh="http://www.w3.org/1999/xhtml" 
+    xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd mlo http://www.xcri.org/bindings/mlo.xsd"
+>
+
+    <learningOpportunityProvider>
+        <dc:title>University of XYX</dc:title>
+        <location><xh:p>XYZ.</xh:p></location>
+
+        <offers>
+            <learningOpportunitySpecification>
+                <dc:title>Course 1</dc:title>
+                <specifies>
+                    <learningOpportunityInstance>
+                        <dc:title>2008 entry</dc:title>
+                        <prerequisite>
+                            You must have done some stuff.
+                        </prerequisite>
+                    </learningOpportunityInstance>
+                </specifies>
+            </learningOpportunitySpecification>
+        </offers>
+
+    </learningOpportunityProvider>
+    
+</Document>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  
+	xmlns="http://xcri.org/profiles/1.2/catalog/terms" 
+xmlns:x="http://www.w3.org/1999/xhtml" 
+xmlns:xcri="http://xcri.org/profiles/1.2/catalog" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+targetNamespace="http://xcri.org/profiles/1.2/catalog/terms" 
+elementFormDefault="qualified" 
+attributeFormDefault="unqualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/>
+	<xs:import namespace="http://xcri.org/profiles/1.2/catalog" schemaLocation="http://schema.prospects.ac.uk/xcri/xcri_cap_1_2.xsd"/>
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://schema.prospects.ac.uk/xcri/dc/dc.xsd"/>
+    
+	<xs:annotation>
+		<xs:documentation xml:lang="en">See http://www.xcri.org/wiki/index.php/XCRI_Terms_1.2</xs:documentation>
+	</xs:annotation>
+
+	<!--- Start of extensible description vocabulary -->
+
+	<xs:complexType name="careerOutcome">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify career outcomes for a course of study</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="contactHours">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify the number and style of contact hours that a learner should expect on a course of study</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="contactPattern">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify the style of contact that a learner would receive on a course of study</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="events">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify events relevant to a course of study, such as open days</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- new element refinement for information about funding. -->
+    <xs:complexType name="funding">
+        <xs:annotation>
+            <xs:documentation>Description refinement typically used for information about sources of finance for students</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="dc:descriptionDType">
+                <xs:sequence>
+                    <xs:element ref="x:div" minOccurs="0" />
+                </xs:sequence>
+                <xs:attribute ref="xml:lang" use="optional"/>
+                <xs:attribute name="href" type="xs:anyURI" use="optional" />
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+	
+	<xs:complexType name="indicativeResource">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to illustrate the kind of resources that would be used on a course of study, such as IT facilities and reading lists</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- new element refinement for information for international students. -->
+    <xs:complexType name="internationalStudents">
+        <xs:annotation>
+            <xs:documentation>Description refinement typically used for information specifically for international students</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="dc:descriptionDType">
+                <xs:sequence>
+                    <xs:element ref="x:div" minOccurs="0" />
+                </xs:sequence>
+                <xs:attribute ref="xml:lang" use="optional"/>
+                <xs:attribute name="href" type="xs:anyURI" use="optional" />
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>	
+		
+	<xs:complexType name="leadsTo">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to describe opportunties likely to flow from a course of study, such as opportunities for further study (course articulations)</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="policy">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify policies relevant to a course of study, such as diversity of adjustments for disability</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>	
+	
+	<xs:complexType name="providedResource">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to clarify resources that would be provided to learners by the institution</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>	
+
+	<xs:complexType name="requiredResource">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to clarify resources that the learner must provide in order to engage in a course of study</xs:documentation>
+		</xs:annotation>	
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="specialFeature">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to highlight special features of a course of study</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>	
+
+	<xs:complexType name="support">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify support facilities available to learners</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="structure">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to provide an overview of the module composition of a course of study</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="studyHours">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify hours of study expected of a learner for successful completion</xs:documentation>
+		</xs:annotation>					
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="teachingStrategy">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify the teaching strategies that will be employed on a course of study</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="topic">
+		<xs:annotation>
+			<xs:documentation>Description refinement typically used to specify a syllabus of topics that would be covered in a course of study</xs:documentation>
+		</xs:annotation>				
+		<xs:complexContent mixed="true">
+			<xs:restriction base="dc:descriptionDType">
+				<xs:sequence>
+					<xs:element ref="x:div" minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional"/>	
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--- End of extensible description vocabulary -->
+
+</xs:schema>

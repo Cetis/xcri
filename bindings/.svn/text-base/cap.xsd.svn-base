@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://xcri.org/profiles/catalog"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	targetNamespace="http://xcri.org/profiles/catalog"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+
+
+			XCRI Course Advertising Profile 1.0 XML Schema XML Schema
+			for http://xcri.org/profiles/catalog
+
+			Created 2006-08-10 Revised 2007-04-19
+
+			Created by
+
+			Simon Grant (asimong@btinternet.com) Alan Paull
+			(alan@alanpaull.co.uk) Ben Ryan (b.ryan@kainao.com) Mark
+			Stubbs (m.stubbs@mmu.ac.uk) Scott Wilson
+			(scott.bradley.wilson@gmail.com)
+
+			=== CHANGES FROM 2007-04-17 to 2007-04-19 by Scott Wilson ===
+			- Removed UKPRN/RLP reference. This has to be added by implementers if they use the UKPRN identifer scheme.
+			- Added "Leads To" entry in Course Description vocabulary
+
+			=== CHANGES FROM 2007-03-17 to 2007-04-17 by Scott Wilson ===
+			- Changed dc import to 'fixed' simple DC schema
+			=== CHANGES FROM first release to 2007-03-17 by Scott Wilson ===
+			- Identifier use IdentifierDType instead of xs:string, and are 1..* or 0..* multiplicity 
+			- Title are now 1..* or 0..* multiplicity and use new LabelDType which include xml:lang 
+			- Presentation.ApplyTo now 0..1 
+			- Presentation.Venue now 0..*
+			- Import ukrlp
+			- Change dc:any to xs:any namespace="http://purl.org/dc/elements/1.1/"
+
+			===
+
+			This schema declares XML elements for advertising courses.
+			It has been devised by the JISC-funded XCRI Reference Model
+			project. XCRI stands for eXchanging Course-Related
+			Information.
+
+			The information model underpinning this Course Advertising
+			XML specification can be used by institutions that provide
+			courses, and organisations that aggregate course
+			opportunities for prospective learners. Its information
+			model is as follows:
+
+			catalog - provider - course - presentation - venue
+
+			A catalog advertises one or more providers A provider
+			advertises one or more courses A course is presented for
+			enrolment one or more times A particular presentation of a
+			course uses one or more venues
+
+			The schema declares three elements: + catalog (root element
+			for getCatalog calls) + provider + course
+
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://purl.org/dc/elements/1.1/"
+		schemaLocation="http://dublincore.org/schemas/xmls/simpledc20021212.xsd" />
+
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
+		schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+
+	<xs:complexType name="labelDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				This is the default type for labels that wish to use the
+				xml:lang attribute
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="xml:lang" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="identifierDType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string"></xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:group name="addressGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				addressGroup is a list of elements used for storing
+				address information.
+
+				+ address occurs zeros or more times to hold address
+				line information that benefits from being broken down
+				for display purposes. Each address line can be
+				optionally typed.
+
+				+ street is a mandatory element that defines the number
+				and street that could be used in conjunction with post
+				town or post code for geo-location.
+
+				+ town is a mandatory element for specifying the post
+				town for geo-location
+
+				+ postcode is a mandatory element used in geo-location
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="address" type="typedStringDType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="street" type="xs:string" />
+			<xs:element name="town" type="xs:string" />
+			<xs:element name="postcode" type="xs:string" />
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="courseDescriptionDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				courseDescriptionDType is a complex type used for
+				storing descriptive information about a course.
+
+				It extends the basic descriptionDType by specifying an
+				optional type value that draws from a restricted
+				vocabulary of categories of descriptive information.
+				This vocabulary has been designed to capture categories
+				typically found in prospectus entries for courses.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="descriptionDType">
+				<xs:attribute name="type" type="courseDescriptionType"
+					use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="courseDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				courseDescriptionType is a simple type that provides an
+				enumerated vocabulary of commonly-used course
+				description categories. This vocabulary has been
+				designed to capture categories typically found in
+				prospectus entries for courses, and was built following
+				a survey of 161 UK prospectus web sites.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Aim" />
+			<xs:enumeration value="Assessment Strategy" />
+			<xs:enumeration value="Career Outcome" />
+			<xs:enumeration value="Entry Profile" />
+			<xs:enumeration value="Indicative Resource" />
+			<xs:enumeration value="Leads To" />
+			<xs:enumeration value="Learning Outcome" />
+			<xs:enumeration value="Policy" />
+			<xs:enumeration value="Provided Resource" />
+			<xs:enumeration value="Regulations" />
+			<xs:enumeration value="Required Resource" />
+			<xs:enumeration value="Special Feature" />
+			<xs:enumeration value="Support" />
+			<xs:enumeration value="Structure" />
+			<xs:enumeration value="Syllabus" />
+			<xs:enumeration value="Teaching Strategy" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dateOrDateTimeDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				dateOrDateTimeDType is a simple type that provides a
+				union of xs:date and xs:dateTime so that start and end
+				values can be specified with varying levels of precision
+				- either just as a date or with additional time
+				information.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:date xs:dateTime" />
+	</xs:simpleType>
+	<xs:complexType name="descriptionDType" mixed="true">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				descriptionDType is a complex type that provides the
+				base for descriptive information. It extends the basic
+				information data type used for simple course information
+				to allow much richer content to be held.
+
+				It permits any valid xhtml as child nodes and specifies
+				two optional attributes:
+
+				lang: for denoting that description is in a particular
+				language
+
+				and
+
+				href: for supplying a link to supporting information
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="http://www.w3.org/1999/xhtml"
+				processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="lang" type="xs:language" use="optional" />
+		<xs:attribute name="href" type="xs:anyURI" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="imageDType" mixed="false">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				imageDType is a complex type that comprises attributes
+				only.
+
+				It defines an element with three attributes: src: a
+				mandatory URI for the image source title: an optional
+				title for the image alt: an optional text that should be
+				displayed if the image cannot be rendered
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="src" type="xs:anyURI" use="required" />
+		<xs:attribute name="title" type="xs:string" use="optional" />
+		<xs:attribute name="alt" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="organisationDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				organisationDType is a complex type used to define the
+				basic properties of an organisation associated with a
+				course - whether it be the provider, an awardingBody, an
+				accreditingBody or a venue at which a course is
+				presented
+
+				It specifies: + a mandatory identifier - when used to
+				define a provider that will be read by an aggregator the
+				element must contain a persistent, unique identifier + a
+				mandatory name for the organisation + zero or more
+				elements of description about the organisation + an
+				optional primary address + an optional primary phone
+				number (as it would be dialled from the UK) + an
+				optional primary fax number (as it would be dialled from
+				the UK) + an optional primary email address + an
+				optional primary url + an optional image for a
+				logo/branding
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifier" type="identifierDType"
+				maxOccurs="unbounded" minOccurs="1" />
+			<xs:element name="name" type="labelDType" />
+			<xs:element name="description" type="descriptionDType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:group ref="addressGroup" minOccurs="0" />
+			<xs:element name="phone" type="xs:string" minOccurs="0" />
+			<xs:element name="fax" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="xs:string" minOccurs="0" />
+			<xs:element name="url" type="xs:anyURI" minOccurs="0" />
+			<xs:element name="image" type="imageDType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="presentationDescriptionDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				presentationDescriptionDType is a complex type that
+				extends descriptionDType to allow an optional type
+				attribute that categorises the descriptive information
+				about the presentation of the course using a controlled
+				vocabulary. The vocabulary was built following a survey
+				of 161 UK prospectus web sites.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="descriptionDType">
+				<xs:attribute name="type"
+					type="presentationDescriptionType" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="presentationDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				presentationDescriptionType is a simple type that
+				provides a vocabulary of categories typically used to
+				provide descriptive information about a particular
+				presentation of a course. The vocabulary was built
+				following a survey of 161 UK prospectus web sites.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Application Procedure" />
+			<xs:enumeration value="Contact Hours" />
+			<xs:enumeration value="Contact Pattern" />
+			<xs:enumeration value="Study Hours" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="presentationDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				presentationDType is a complex type that defines
+				elements to be used to describe a particular
+				presentation of a course. A presentation is a particular
+				instance of the course offered at a particular time and
+				place and is the entity to which learners apply.
+
+				It specifies: + an (optional) identifier for the
+				presentation + zero or more descriptions of the course
+				presentation that may be in different languages and/or
+				categorise the description + an (optional) start date
+				for the presentation + an (optional) end date for the
+				presentation + an (optional) duration for the
+				presentation, eg 3 Years + a mandatory studyMode for the
+				presentation, eg Full-Time/Part-Time + zero or more
+				languages in which the course will be presented + zero
+				or more languages in which the course will be assessed +
+				one or more venues in which the course will be presented
+				+ an (optional) description of the places available + an
+				(optional) description of the cost of studying this
+				course presentation + an (optional) description of the
+				entry requirements for this course presentation + an
+				(optional) date from which applications to the course
+				presentation can be made + an (optional) cut off date by
+				which applications must be made + a mandatory
+				organisational body to which applications must be made
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifier" type="xs:anyURI"
+				minOccurs="0" />
+			<xs:element name="description"
+				type="presentationDescriptionDType" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="start" type="dateOrDateTimeDType" />
+			<xs:element name="end" type="dateOrDateTimeDType"
+				minOccurs="0" />
+			<xs:element name="duration" type="xs:string" minOccurs="0" />
+			<xs:element name="studyMode" type="xs:string" />
+			<xs:element name="languageOfInstruction" type="xs:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="languageOfAssessment" type="xs:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="venue" type="organisationDType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="placesAvailable" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="cost" type="xs:string" minOccurs="0" />
+			<xs:element name="entryRequirements" type="descriptionDType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="applyFrom" type="dateOrDateTimeDType"
+				minOccurs="0" />
+			<xs:element name="applyUntil" type="dateOrDateTimeDType"
+				minOccurs="0" />
+			<xs:element name="applyTo" type="organisationDType"
+				maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="qualificationDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				qualificationDType is a complex type that provides
+				details of a qualification that can result from studying
+				a course.
+
+				It specifies: + a mandatory title for the qualification
+				+ a mandatory level for the qualification + an
+				(optional) type for the qualification + zero or more
+				bodies that award the qualification + zero or more
+				bodies that accredit the qualification
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="title" type="labelDType" />
+			<xs:element name="level" type="xs:string" />
+			<xs:element name="type" type="xs:string" minOccurs="0" />
+			<xs:element name="awardedBy" type="organisationDType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="accreditedBy" type="organisationDType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typedStringDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				typedStringDType specifies a simple string element that
+				has an optional type attribute
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="xs:string"
+					use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:attribute name="recstatus">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				The optional recstatus attribute provides a mechanism
+				for indicating whether the element to which it refers (a
+				provider or course) has changed. The enumerated value of
+				the attribute indicates the nature of the change: 1 =
+				Added 2 = Updated 3 = Deleted
+
+				A provider or course element that has this attribute
+				must include an identifier element that supplies a
+				persistent, unique value so that the recipient of the
+				xml can maintain state for itself.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="1" />
+				<xs:enumeration value="2" />
+				<xs:enumeration value="3" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+
+	<xs:element name="catalog">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				catalog is the root element for XCRI's Course
+				Advertising schema It prescribes one or more providers
+				and a mandatory attribute that timestamps generation of
+				the XML catalog.
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="provider" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="generated" type="xs:dateTime"
+				use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="provider">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				provider extends organisationDType to hold details of
+				the learning provider and the courses it offers.
+
+				The recstatus attribute is used to alert an aggregator
+				to a change in provider details. Whenever rectstatus is
+				used, provider.identifier must contain a persistent,
+				unique identifier, so that an aggregator can identify
+				what has changed as well as how it has changed
+				(addition, modification or deletion).
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="organisationDType">
+					<xs:sequence>
+						<xs:element ref="course" maxOccurs="unbounded" />
+					</xs:sequence>
+					<xs:attribute ref="recstatus" use="optional" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="course">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+
+				course provides details of a course of study offered by
+				a learning provider.
+
+				It specifies
+
+				+ an identifier (mandatory)
+
+				+ a title (mandatory)
+
+				+ a description (optional and can appear multiple times
+				in different languages and/or with sub-types from the
+				courseDescriptionType vocabulary)
+
+				+ an optional url for further details about the course
+
+				+ an optional image for any course logo/branding
+
+				+ zero or more dc:metadata elements. In particular the
+				dc:subject element is recommended for specifying
+				keywords or referred to controlled vocabularies for
+				subject definitions.
+
+				+ one or more qualification elements that define the
+				qualifications that can be achieved from completing the
+				course and its various option pathways
+
+				+ one or more presentations of the course to which
+				students might apply and enrol
+
+				The recstatus attribute is used to alert an aggregator
+				to a change in course details. Whenever rectstatus is
+				used, course.identifier must contain a persistent,
+				unique identifier, so that an aggregator can identify
+				what has changed as well as how it has changed
+				(addition, modification or deletion).
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="identifier" type="identifierDType"
+					maxOccurs="unbounded" minOccurs="1" />
+				<xs:element name="title" type="labelDType"
+					maxOccurs="unbounded" minOccurs="1" />
+				<xs:element name="description"
+					type="courseDescriptionDType" maxOccurs="unbounded" />
+				<xs:element name="url" type="xs:anyURI" minOccurs="0" />
+				<xs:element name="image" type="imageDType"
+					minOccurs="0" />
+				<xs:element name="qualification"
+					type="qualificationDType" maxOccurs="unbounded" />
+				<xs:element name="presentation" type="presentationDType"
+					maxOccurs="unbounded" />
+				<xs:any namespace="http://purl.org/dc/elements/1.1/"
+           			minOccurs="1" maxOccurs="unbounded"
+           			processContents="skip"/>
+			</xs:sequence>
+			<xs:attribute ref="recstatus" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

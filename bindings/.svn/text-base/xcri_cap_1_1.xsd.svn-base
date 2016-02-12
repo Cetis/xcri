@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://xcri.org/profiles/catalog" xmlns:x="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xcri.org/profiles/catalog" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/>
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">XCRI Course Advertising Profile 1.1 XML Schema XML Schema for http://xcri.org/profiles/cap Created 2007-12-19 
+		Originally created by Simon Grant (asimong@btinternet.com) Alan Paull (alan@alanpaull.co.uk) Ben Ryan (b.ryan@kainao.com) Mark Stubbs (m.stubbs@mmu.ac.uk) Scott Wilson (scott.bradley.wilson@gmail.com).
+		Full documentation is available from http://www.xcri.org/wiki
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:simpleType name="dateOrDateTimeDType">
+		<xs:union memberTypes="xs:date xs:dateTime" />
+	</xs:simpleType>
+		
+	<xs:complexType name="descriptionDType" mixed="true">
+		<xs:sequence>
+			<xs:element ref="x:div" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute ref="xml:lang" use="optional"/>	
+		<xs:attribute name="href" type="xs:anyURI" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="genericDType">
+		<xs:sequence>
+			<xs:element name="identifier" type="identifierDType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="title" type="labelDType" minOccurs="0" maxOccurs="unbounded" />			
+			<xs:element name="subject" type="labelDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="descriptionDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="relation" type="relationDType" minOccurs="0" maxOccurs="unbounded"/>			
+			<xs:element name="url" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="image" type="imageDType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="recstatus" type="recstatusDType" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="labelDType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="xml:lang" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="identifierDType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	
+	<xs:complexType name="imageDType" mixed="false">
+		<xs:attribute name="src" type="xs:anyURI" use="required" />
+		<xs:attribute name="title" type="xs:string" use="optional" />
+		<xs:attribute name="alt" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:simpleType name="recstatusDType">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="1"><xs:annotation><xs:documentation>1 = Added</xs:documentation></xs:annotation></xs:enumeration>
+		  <xs:enumeration value="2"><xs:annotation><xs:documentation>2 = Updated</xs:documentation></xs:annotation></xs:enumeration>
+		  <xs:enumeration value="3"><xs:annotation><xs:documentation>3 = Deleted</xs:documentation></xs:annotation></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="relationDType">
+		<xs:restriction base="identifierDType" />
+	</xs:simpleType>
+
+	<xs:group name="addressGroup">
+		<xs:sequence>
+			<xs:element name="address" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="street" type="xs:string" minOccurs="0" />
+			<xs:element name="town" type="xs:string" minOccurs="0" />
+			<xs:element name="postcode" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:complexType name="organisationDType">
+		<xs:complexContent>
+			<xs:extension base="genericDType">
+				<xs:sequence>
+					<xs:group ref="addressGroup" minOccurs="0" />
+					<xs:element name="phone" type="xs:string" minOccurs="0" />
+					<xs:element name="fax" type="xs:string" minOccurs="0" />
+					<xs:element name="email" type="xs:string" minOccurs="0" />			
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="catalog">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType">
+					<xs:sequence>
+						<xs:element ref="provider" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="generated" type="xs:dateTime" use="required" /> 
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="course">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType">
+					<xs:sequence>
+						<xs:element ref="qualification"  minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="credit"  minOccurs="0" maxOccurs="unbounded" />
+						<xs:element ref="presentation"  minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="credit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="scheme" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="level" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1" />
+                <xs:element name="description" type="descriptionDType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="entryProfile">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType" />
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="entryRequirements">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType" />
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="presentation">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType">
+					<xs:sequence>
+						<xs:element name="start" type="dateOrDateTimeDType" minOccurs="0" />
+						<xs:element name="startUntil" type="dateOrDateTimeDType" minOccurs="0" />
+						<xs:element name="endFrom" type="dateOrDateTimeDType" minOccurs="0" />						
+						<xs:element name="end" type="dateOrDateTimeDType" minOccurs="0" />
+						<xs:element name="duration" type="xs:string" minOccurs="0" />
+						<xs:element name="studyMode" type="xs:string"  minOccurs="0" />
+						<xs:element name="attendanceMode" type="xs:string" minOccurs="0"/>
+						<xs:element name="attendancePattern" type="xs:string" minOccurs="0" />
+						<xs:element name="languageOfInstruction" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="languageOfAssessment" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element ref="venue" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="placesAvailable" type="xs:string" minOccurs="0" />
+						<xs:element name="cost" type="xs:string" minOccurs="0" />
+						<xs:element ref="entryProfile" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element ref="entryRequirements" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="applyFrom" type="dateOrDateTimeDType" minOccurs="0" />
+						<xs:element name="applyUntil" type="dateOrDateTimeDType" minOccurs="0" />
+						<xs:element name="applyTo" type="xs:string" minOccurs="0" maxOccurs="1" />
+						<xs:element name="enquireTo" type="xs:string" minOccurs="0" maxOccurs="1" />
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="provider">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="organisationDType">
+					<xs:sequence>
+						<xs:element ref="course" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="qualification">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="genericDType">
+					<xs:sequence>
+						<xs:element name="level" type="xs:string" minOccurs="0"/>
+						<xs:element name="type" type="xs:string" minOccurs="0" />
+						<xs:element name="awardedBy" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="accreditedBy" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="venue">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="organisationDType" />
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
