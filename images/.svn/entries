@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="15070"
+   name=""
+   committed-date="2006-06-26T16:52:04.867174Z"
+   url="http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_9_1/phase3/images"
+   last-author="robchurch"
+   kind="dir"
+   uuid="dd0e9695-b195-4be7-bd10-2dea1a65a6b6"
+   repos="http://svn.wikimedia.org/svnroot/mediawiki"
+   prop-time="2007-03-15T14:53:24.000000Z"
+   revision="20489"/>
+<entry
+   committed-rev="15070"
+   name="README"
+   text-time="2007-03-15T14:53:24.000000Z"
+   committed-date="2006-06-26T16:52:04.867174Z"
+   checksum="2e2c7958021dc3d97327445b87eda790"
+   last-author="robchurch"
+   kind="file"
+   prop-time="2007-03-15T14:53:24.000000Z"/>
+</wc-entries>
