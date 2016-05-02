@@ -2,6 +2,17 @@
 layout: post
 ---
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73710929-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 
 
@@ -240,8 +251,8 @@ that will populate the sample tables:
     /****** Object:  Table [dbo].[Term]    Script Date: 04/01/2012 18:57:33 ******/
     INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'1', N'http://example.org/sqa/credit', N'en', N'Level 1', NULL)
     INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'16+', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'16+', NULL)
-    INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'16‚Äì18', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'16‚Äì18', NULL)
-    INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'16‚Äì20', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'16‚Äì20', NULL)
+    INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'16???????18', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'16???????18', NULL)
+    INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'16???????20', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'16???????20', NULL)
     INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'2', N'http://example.org/sqa/credit', N'en', N'Level 2', NULL)
     INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'3', N'http://example.org/sqa/credit', N'en', N'Level 3', NULL)
     INSERT [dbo].[Term] ([TermId], [VocabularyId], [Language], [Label], [Description]) VALUES (N'any', N'http://xcri.org/profiles/catalog/1.2/age', N'en', N'any', NULL)
@@ -497,7 +508,7 @@ Retrieved from
 
 
 
- 
+??
 
 
 
