@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Author: Alan Paull, APS Ltd, alan@alanpaull.co.uk
+Created: 25 June 2014; modified: 21 May 2015
+This is a generic XCRI-CAP 1.2 example file produced to illustrate the postgraduate format adopted by Graduate Prospects, including material that would be expected to be relevant for other aggregators.
+It uses the coursedataprogramme.xsd schema.
+It uses revisions to the schemas to include specific refinements for postgraduate data vocabularies.
+-->
+
+<catalog
+    xmlns="http://xcri.org/profiles/1.2/catalog"
+    xmlns:xcriTerms="http://xcri.org/profiles/1.2/catalog/terms"
+    xmlns:credit="http://purl.org/net/cm"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:mlo="http://purl.org/net/mlo"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:courseDataProgramme="http://xcri.co.uk"
+    xsi:schemaLocation="
+    http://xcri.org/profiles/1.2/catalog http://schema.prospects.ac.uk/xcri/xcri_cap_1_2.xsd 
+    http://www.w3.org/2003/01/geo/wgs84_pos http://www.craighawker.co.uk/xcri/validation/xsds/geo.xsd 
+    http://xcri.org/profiles/1.2/catalog/terms http://schema.prospects.ac.uk/xcri/xcri_cap_terms_1_2.xsd 
+    http://purl.org/net/mlo http://schema.prospects.ac.uk/xcri/mlo/mlo_xcri_profile.xsd 
+    http://xcri.co.uk http://schema.prospects.ac.uk/xcri/coursedataprogramme.xsd"
+    generated="2015-05-14T16:58:57">
+    <dc:contributor>Alan Paull</dc:contributor>
+    <dc:description>Poppleton University's Postgraduate prospectus. This data is released under Open Government Licence (OGL) Version 1.0 - http://www.nationalarchives.gov.uk/doc/open-government-licence/</dc:description>
+	<provider>
+	    <!-- list of all the university's departments that can 'own' courses. -->
+	    <mlo:hasPart>Department of Media Studies</mlo:hasPart>
+	    <mlo:hasPart>Department of Health</mlo:hasPart>
+	    <mlo:hasPart>Department of Biological Sciences</mlo:hasPart>
+	    <mlo:hasPart>Department of Management</mlo:hasPart>
+	    <dc:description>Britain's most rewarding university</dc:description>
+		<dc:identifier>http://www.poppleton.ac.uk</dc:identifier>
+	    <dc:identifier xsi:type="courseDataProgramme:ukprn">10099999</dc:identifier>
+	    <dc:title>Poppleton University</dc:title>
+		<mlo:url>http://www.poppleton.ac.uk/postgraduate/</mlo:url>
+	    <course>
+            <!-- isPartOf must match exactly with a hasPart entry -->
+            <mlo:isPartOf>Department of Management</mlo:isPartOf>
+
+            <!-- Note XHTML markup (concise markup version) -->
+            <dc:description>
+                <xhtml:div>
+                    <xhtml:p>MBA in Business and Marketing</xhtml:p>
+                    <xhtml:p>This professional masters degree in business and marketing is an exciting route for anyone working in any field to achieve a respected qualification by undertaking advanced study in management.</xhtml:p>
+                    <xhtml:p>The course is undertaken part-time whilst you continue to work in your chosen field.</xhtml:p>
+                    <xhtml:p>Along with taught elements, you will develop the depth and breadth of knowledge in your particular area of study and in doing so, will add considerably to the value of the role you hold in your current employment.</xhtml:p>
+                    <xhtml:p>If you wish to complete the MBA you will be required to successfully complete both Stages 1 and 2.</xhtml:p>
+                </xhtml:div>
+            </dc:description>
+    
+            <!-- 'specialFeature' is in the XCRI-CAP 1.2 Terms schema (verbose markup version) -->
+            <dc:description xsi:type="xcriTerms:specialFeature">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                    <p>The course offers you the opportunity to specialise</p>
+                    <ul>
+                        <li>>Management</li>
+                        <li>Business Studies</li>
+                        <li>Marketing</li>
+                    </ul>
+                </div>
+            </dc:description>
+	        
+	        <dc:identifier>http://www.poppleton.ac.uk/postgraduate/mba</dc:identifier>
+	        <dc:identifier xsi:type="courseDataProgramme:internalID">PG064</dc:identifier>
+	        <dc:subject xsi:type="courseDataProgramme:JACS3" identifier="N200">Management studies</dc:subject>
+	        <dc:subject xsi:type="courseDataProgramme:JACS3" identifier="N500">Marketing</dc:subject>
+    
+            <!-- Additional keyword as an aid to searching -->
+            <dc:subject>Business Administration and Management</dc:subject>
+    
+            <dc:title>Business and Marketing</dc:title>
+    
+            <!-- Course type codes specific to PG(T) -->
+	        <dc:type xsi:type="courseDataProgramme:courseTypeGeneral" courseDataProgramme:identifier="PG">Postgraduate</dc:type>
+	        <dc:type xsi:type="mlo:RTCourseTypeFlag" mlo:RT-identifier="T">Taught</dc:type>
+	        <mlo:url>http://www.poppleton.ac.uk/postgraduate/mba</mlo:url>
+	        <abstract>This professional masters degree in business and marketing is an exciting route for anyone working in any field.</abstract>
+	        <applicationProcedure href="http://www.poppleton.ac.uk/postgraduate/courses/how-to-apply/"/>
+	        <mlo:assessment>Assessment is by one 5,000-word essay for each module and the dissertation</mlo:assessment>
+	        <learningOutcome>Students will develop a strategic understanding of the key functions of business - accounting and finance, management, business information systems, marketing, operations, and statistics.</learningOutcome>
+	        <mlo:objective>Successful award of MBA</mlo:objective>
+	        <mlo:prerequisite>First degree in any subject.</mlo:prerequisite>
+	        <regulations href="www.poppleton.ac.uk/regulations"/>
+	        <mlo:qualification>
+	            <dc:identifier>MBA001</dc:identifier>
+	            <dc:title>MBA Business and Marketing</dc:title>
+	            <abbr>MBA</abbr>
+	            <dc:description>Master of Business Administration</dc:description>
+	            <dcterms:educationLevel>Postgraduate</dcterms:educationLevel>
+	            <mlo:url>http://www.poppleton.ac.uk/postgraduate/mba</mlo:url>
+	            <awardedBy>Poppleton University</awardedBy>
+	        </mlo:qualification>
+	        <mlo:credit>
+	            <credit:scheme>Poppleton Measurement Transfer (PMT) scheme</credit:scheme>
+	            <credit:level>M</credit:level>
+	            <credit:value>180</credit:value>
+	        </mlo:credit>
+	        <presentation>
+	            <dc:identifier>http://www.poppleton.ac.uk/postgraduate/mba</dc:identifier>
+	            <dc:title>Business and Marketing</dc:title>
+	            <mlo:start dtf="2015-09-01">September 2015</mlo:start>
+	            <end dtf="2017-07-01">July 2017</end>
+	            <mlo:duration interval="P2Y">2 years</mlo:duration>
+	            <applyFrom dtf="2014-09">September 2014</applyFrom>
+	            <applyUntil dtf="2015-09">September 2015</applyUntil>
+	            <applyTo>http://www.poppleton.ac.uk/postgraduate/courses/how-to-apply/</applyTo>
+	            <studyMode identifier="PT">Part time</studyMode>
+        
+                <!-- Note: in the absence of attendanceMode, consumers can assume that it is Campus, so the attendanceMode can be omitted -->
+                <attendanceMode identifier="CM">Campus</attendanceMode>
+        
+                <attendancePattern identifier="DT">Daytime</attendancePattern>
+                <mlo:languageOfInstruction>en</mlo:languageOfInstruction>
+                <languageOfAssessment>en</languageOfAssessment>
+	            <mlo:places>50</mlo:places>
+	            <mlo:cost>GBP6,000 per stage</mlo:cost>
+        
+                <!-- Note: in the absence of venue, consumers can assume that it is as per the main provider element, so the venue can be omitted -->
+	            <venue>
+	                <provider>
+	                    <dc:identifier>Main Campus</dc:identifier>
+	                    <dc:title>Main Campus</dc:title>
+	                    <mlo:location>
+	                        <mlo:town>Poppleton</mlo:town>
+	                        <mlo:postcode>PP99 1PP</mlo:postcode>
+	                        <mlo:address>University Road</mlo:address>
+	                        <mlo:address>Poppleton</mlo:address>
+	                        <mlo:phone>0800 666 9999</mlo:phone>
+	                        <mlo:email>course-enquiries@poppleton.ac.uk</mlo:email>
+	                    </mlo:location>
+	                </provider>
+	            </venue>
+	        </presentation>
+	    </course>
+	    <mlo:location>
+	        <mlo:town>Poppleton</mlo:town>
+	        <mlo:postcode>PP99 1PP</mlo:postcode>
+	        <mlo:address>University Road</mlo:address>
+	        <mlo:address>Poppleton</mlo:address>
+    
+            <!-- international convention also acceptable:  +44 (0) 800 666 9999 -->
+	        <mlo:phone>0800 666 9999</mlo:phone>
+	        <mlo:fax>0666 666 9998</mlo:fax>
+	        <mlo:email>course-enquiries@poppleton.ac.uk</mlo:email>
+	    </mlo:location>
+	</provider>
+</catalog>
