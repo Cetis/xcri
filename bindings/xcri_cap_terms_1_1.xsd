@@ -10,7 +10,7 @@ attributeFormDefault="unqualified">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>	
 	<xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/>
-	<xs:import namespace="http://xcri.org/profiles/catalog" schemaLocation="http://www.xcri.org/bindings/xcri_cap_1_1.xsd"/>
+	<xs:import namespace="http://xcri.org/profiles/catalog" schemaLocation="https://github.com/Cetis/xcri/tree/master/bindings/xcri_cap_1_1.xsd"/>
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Element type refinements for use with XCRI Course Advertising Profile 1.1 XML. Created 2008-01-11.
